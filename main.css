@@ -4,90 +4,122 @@
     font-family: "Poppins", sans-serif;
     box-sizing: border-box;
 }
+
 body{
     background-color: rgb(15, 48, 48);
+    min-height: 100vh;
+    padding: 10px;
 }
+
 .card{
-    width: 90%;
+    width: 100%;
     max-width: 470px;
-    background:linear-gradient(135deg, #00feba, #5b548a);
+    background: linear-gradient(135deg, #00feba, #5b548a);
     color: #fff;
-    margin: 100px auto 0;
+    margin: clamp(20px, 8vh, 100px) auto 0;   /* tepadagi bo'shliq ekranga qarab */
     border-radius: 20px;
-    padding: 40px 35px;
+    padding: clamp(20px, 6vw, 40px) clamp(15px, 5vw, 35px);
     text-align: center;
 }
+
 .search{
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 10px;
 }
+
 .search input{
     border: 0;
     outline: 0;
     background: #ebfffc;
     color: #555;
-    padding: 10px 25px;
-    height: 60px;
+    padding: 10px clamp(15px, 4vw, 25px);
+    height: clamp(48px, 13vw, 60px);
     border-radius: 30px;
     flex: 1;
-    margin-right: 16px;
-    font-size: 18px;
+    min-width: 0;              /* input flex ichida siqilib qola olishi uchun */
+    font-size: clamp(15px, 4vw, 18px);
 }
+
 .search button{
     border: 0;
     outline: 0;
     background: #ebfffc;
     border-radius: 50%;
-    width: 60px;
-    height: 60px;
+    width: clamp(48px, 13vw, 60px);
+    height: clamp(48px, 13vw, 60px);
+    flex-shrink: 0;            /* tugma qisilib oval bo'lib qolmasin */
     cursor: pointer;
 }
+
 .search img{
     width: 25px;
-    text-align: center;
 }
+
 .weather-icon{
-    width: 170px;
+    width: clamp(110px, 35vw, 170px);
     margin-top: 30px;
 }
+
 .weather h1{
-    font-size: 80px;
+    font-size: clamp(52px, 16vw, 80px);
     font-weight: 500;
 }
-.weather h1{
-    font-size: 45px;
+
+.weather h2{
+    font-size: clamp(30px, 9vw, 45px);
     font-weight: 400;
     margin-top: 10px;
 }
+
 .details{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 20px;
-    margin-top: 50px;  
+    gap: 10px;
+    padding: 0 clamp(0px, 3vw, 20px);
+    margin-top: clamp(30px, 8vw, 50px);
 }
+
 .col{
     display: flex;
     align-items: center;
     text-align: left;
 }
+
 .col img{
-    width: 40px;
+    width: clamp(28px, 8vw, 40px);
     margin-right: 10px;
 }
+
 .humidity, .wind{
-    font-size: 28px;
-    margin-top: -6px;    
+    font-size: clamp(20px, 6vw, 28px);
+    margin-top: -6px;
 }
+
+.col p:last-child{             /* "Humidity", "Wind speed" yozuvi */
+    font-size: clamp(12px, 3.5vw, 16px);
+}
+
 .weather{
     display: none;
 }
+
 .error{
     text-align: left;
     margin-left: 10px;
     font-size: 14px;
-    margin-top: 10px; 
+    margin-top: 10px;
     display: none;
+}
+
+/* Juda kichik ekranlar */
+@media (max-width: 360px){
+    .details{
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
 }
